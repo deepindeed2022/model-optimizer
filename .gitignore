@@ -1,0 +1,5 @@
+pytorch
+*.pyc 
+__pycache__
+models
+*torch_compile_debug*
