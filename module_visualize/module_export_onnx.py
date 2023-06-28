@@ -3,11 +3,16 @@ import torch
 import onnx
 from onnx.shape_inference import infer_shapes
 import yolo_module as module
+import transformer_module as transformer_module
 
 yaml_cfg = yaml.safe_load(open("test.yaml").read())
 for i, (m, args, input_shape) in enumerate(yaml_cfg["module"]):
-    mo = module.__dict__[m](*args)
-    print(mo)
+    try:
+        mo = module.__dict__[m](*args)
+        print(mo)
+    except KeyError:
+        mo = transformer_module.__dict__[m](*args)
+        print(mo)
     output_f = f"{m}.onnx"
     img = torch.ones(*input_shape)
     torch.onnx.export(
