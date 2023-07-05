@@ -6,7 +6,7 @@
 - docker image as run env
 ```bash
 docker pull ghcr.io/pytorch/pytorch-nightly:latest
-docker run --gpus all -it -v /home/wenlong.cao/Repo/model-optimizer/:/workspace/ ghcr.io/pytorch/pytorch-nightly:latest /bin/bash
+docker run --gpus all -it  ~/Repo/model-optimizer/:/workspace/ ghcr.io/pytorch/pytorch-nightly:latest /bin/bash
 ```
 ## FX
 ### Node
