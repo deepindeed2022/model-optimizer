@@ -1,20 +1,24 @@
-from diffusers import StableDiffusionPipeline
 import torch
+from diffusers import StableDiffusionPipeline
 from PIL import Image
+
 pipe = StableDiffusionPipeline.from_pretrained(
-    "runwayml/stable-diffusion-v1-5",
-    torch_dtype=torch.float16,
+    "stabilityai/stable-diffusion-2-1",
+    torch_dtype=torch.float16
 ).to("cuda")
-models = [  pipe.vae,
-            pipe.text_encoder,
-            pipe.unet,
-            pipe.safety_checker,
-            pipe.feature_extractor]
+
+models = [pipe.vae,
+          pipe.text_encoder,
+          pipe.unet,
+          pipe.safety_checker,
+          pipe.feature_extractor]
+
 for k, v in pipe.components.items():
     print("==="*20)
     print(k)
     print("==="*20)
     print(v)
+
 pipe.enable_xformers_memory_efficient_attention()
 
 # a photo of an astronaut riding a horse on mars
