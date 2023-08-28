@@ -4,3 +4,4 @@ __pycache__
 models
 *torch_compile_debug*
 MLIR
+.vscode
